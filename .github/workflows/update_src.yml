@@ -9,8 +9,13 @@ jobs:
   update-overlay:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: cachix/install-nix-action@v13
+    - name: Checkout project
+      uses: actions/checkout@v2
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@v13
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
 
     - name: Configure Git
       run: |
