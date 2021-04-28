@@ -5,4 +5,7 @@ let
     (fetchTarball "https://github.com/NixOS/nixpkgs/archive/${commit}.tar.gz") {
       overlays = [ (import ./emacs-overlay.nix) ];
     };
-in { emacsOsx = pkgs.emacsOsx; }
+in {
+  emacsOsx = pkgs.emacsOsx;
+  emacsOsxPlus = pkgs.emacsOsxPlus;
+}
