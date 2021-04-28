@@ -6,8 +6,8 @@ let
       overlays = [ (import ./emacs-overlay.nix) ];
     };
 in with pkgs; {
-  inherit emacsOsx emacsOsxPlus;
+  inherit emacsOsx emacsOsxNative;
 
-  # with-native-compilation
-  inherit emacsOsxNative emacsOsxNativePlus;
+  # with no patches whatsoever
+  inherit emacsOsxMin emacsOsxNativeMin;
 }

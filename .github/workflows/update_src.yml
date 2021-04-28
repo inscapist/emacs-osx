@@ -2,6 +2,7 @@ name: Update Emacs Source
 
 on:
   schedule:
+    # At minute 0 past every 8th hour.
     - cron: '0 */8 * * *'
   workflow_dispatch:
 
@@ -24,7 +25,7 @@ jobs:
 
     - name: Update inputs
       run: |
-        ./repos/emacs/update_emacs
+        ./emacs-source/update
 
     - name: Push commit with updated inputs
       run: |

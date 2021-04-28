@@ -1,0 +1,7 @@
+#!/usr/bin/env nix-shell
+#! nix-shell -i bash -p bash git
+
+# update source, and if source changes, create a new commit
+./update-emacs-source && (git diff --exit-code emacs > /dev/null || git commit -m "Updated emacs" -- emacs)
+
+exit 0

@@ -31,27 +31,26 @@ let
         }))
     ];
 
-  emacsOsx = mkGitEmacs "emacs-osx" ./repos/emacs/emacs-master.json
-    [ ./patches/tramp-detect-wrapped-gvfsd.patch ] { };
-
-  emacsOsxNative = mkGitEmacs "emacs-osx" ./repos/emacs/emacs-master.json
-    [ ./patches/tramp-detect-wrapped-gvfsd.patch ] { nativeComp = true; };
-
-  emacsOsxPlus = mkGitEmacs "emacs-osx" ./repos/emacs/emacs-master.json [
-    ./patches/tramp-detect-wrapped-gvfsd.patch
+  emacsOsx = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [
     ./patches/no-titlebar.patch
     ./patches/fix-window-role-yabai.patch
   ] { };
 
-  emacsOsxNativePlus = mkGitEmacs "emacs-osx" ./repos/emacs/emacs-master.json [
-    ./patches/tramp-detect-wrapped-gvfsd.patch
+  emacsOsxNative = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [
     ./patches/no-titlebar.patch
     ./patches/fix-window-role-yabai.patch
   ] { nativeComp = true; };
 
+  emacsOsxMin = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json
+    [ ] { };
+
+  emacsOsxNativeMin = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json
+    [ ] { nativeComp = true; };
+
+
 in {
   inherit emacsOsx;
   inherit emacsOsxNative;
-  inherit emacsOsxPlus;
-  inherit emacsOsxNativePlus;
+  inherit emacsOsxMin;
+  inherit emacsOsxNativeMin;
 }
