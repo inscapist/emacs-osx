@@ -1,4 +1,4 @@
-name: CI
+name: Automated Build
 
 on:
   push:
