@@ -5,8 +5,14 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_run:
+    workflows: ["Update Emacs Source"]
+    branches: [main]
+    types: 
+      - completed
 
   # Allows you to run this workflow manually from the Actions tab
+  # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#example-workflow-configuration
   workflow_dispatch:
 
 jobs:
