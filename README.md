@@ -27,6 +27,12 @@ sudo rm -rf /Applications/Emacs.app
 sudo cp -rL ~/.nix-profile/Applications/Emacs.app /Applications
 ```
 
+## Motivation
+- Replicate [Emacs Overlay](https://github.com/nix-community/emacs-overlay) to OSX/darwin environment
+- Allow overrides of patches
+- Last but not least, for my own learning and use
+- And in future (custom icons and automated latest builds from savannah)
+
 ## Patches
 More patches can be found below:
 - [daviderestivo's emacs-head](https://github.com/daviderestivo/homebrew-emacs-head/tree/master/patches)
@@ -38,6 +44,8 @@ Note that this uses --with-ns (nextstep) and patches from "Mac Port" (see [here]
 ## References
 - https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/applications/editors/emacs/generic.nix
 - https://github.com/nix-community/emacs-overlay
+- https://european-lisp-symposium.org/static/2020/corallo-nassi-manca-slides.pdf
+- https://arxiv.org/pdf/2004.02504.pdf
 
 ## CI configuration (Github Action)
 Refer https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
