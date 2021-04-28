@@ -48,6 +48,7 @@ Note that this uses --with-ns (nextstep) and patches from "Mac Port" (see [here]
 - https://github.com/nix-community/emacs-overlay
 - https://european-lisp-symposium.org/static/2020/corallo-nassi-manca-slides.pdf
 - https://arxiv.org/pdf/2004.02504.pdf
+- https://www.gnu.org/software/emacs/manual/html_node/elisp/Building-Emacs.html
 
 ## CI configuration (Github Action)
 Refer https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on

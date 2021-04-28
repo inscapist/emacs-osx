@@ -1,0 +1,27 @@
+name: Update Emacs Source
+
+on:
+  schedule:
+    - cron: '0 */8 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-overlay:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: cachix/install-nix-action@v1
+
+    - name: Configure Git
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+
+    - name: Update inputs
+      run: |
+        ./repos/emacs/update_emacs
+
+    - name: Push commit with updated inputs
+      run: |
+        git pull --rebase --autostash
+        git push

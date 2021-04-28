@@ -31,15 +31,27 @@ let
         }))
     ];
 
-  emacsOsx = mkGitEmacs "emacs-osx" ./emacs-master.json
+  emacsOsx = mkGitEmacs "emacs-osx" ./repos/emacs/emacs-master.json
+    [ ./patches/tramp-detect-wrapped-gvfsd.patch ] { };
+
+  emacsOsxNative = mkGitEmacs "emacs-osx" ./repos/emacs/emacs-master.json
     [ ./patches/tramp-detect-wrapped-gvfsd.patch ] { nativeComp = true; };
 
-  emacsOsxPlus = mkGitEmacs "emacs-osx" ./emacs-master.json [
+  emacsOsxPlus = mkGitEmacs "emacs-osx" ./repos/emacs/emacs-master.json [
     ./patches/tramp-detect-wrapped-gvfsd.patch
     ./patches/no-titlebar.patch
+    ./patches/fix-window-role-yabai.patch
+  ] { };
+
+  emacsOsxNativePlus = mkGitEmacs "emacs-osx" ./repos/emacs/emacs-master.json [
+    ./patches/tramp-detect-wrapped-gvfsd.patch
+    ./patches/no-titlebar.patch
+    ./patches/fix-window-role-yabai.patch
   ] { nativeComp = true; };
 
 in {
   inherit emacsOsx;
+  inherit emacsOsxNative;
   inherit emacsOsxPlus;
+  inherit emacsOsxNativePlus;
 }
