@@ -45,7 +45,7 @@ sudo cp -rL ~/.nix-profile/Applications/Emacs.app /Applications
 - Replicate [Emacs Overlay](https://github.com/nix-community/emacs-overlay) to OSX/darwin environment
 - Allow overrides of patches
 - Last but not least, for my own learning and use
-- And in future (custom icons and automated latest builds from savannah)
+- And in future (my own custom icons)
 
 ## Patches
 
