@@ -41,12 +41,12 @@ let
     ./patches/fix-window-role-yabai.patch
   ] { nativeComp = true; };
 
-  emacsOsxMin = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json
-    [ ] { };
+  emacsOsxMin = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [ ] { };
 
-  emacsOsxNativeMin = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json
-    [ ] { nativeComp = true; };
-
+  emacsOsxNativeMin =
+    mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [ ] {
+      nativeComp = true;
+    };
 
 in {
   inherit emacsOsx;
