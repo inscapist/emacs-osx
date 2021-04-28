@@ -2,7 +2,7 @@
 
 ## Installation
 
-No Nix knowledge required, and you do NOT need `nix-darwin` for this to work.
+No Nix knowledge required, and you do NOT need `nix-darwin` for this to work. [Nix Darwin](https://github.com/LnL7/nix-darwin) allows installation to /Applications folder but you could also symlink from `~/.nix-profile/Applications`.
 
 Visit this link if you haven't installed Nix already.
 https://nixos.org/guides/install-nix.html
