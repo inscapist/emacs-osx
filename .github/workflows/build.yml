@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  emacsOsx:
     runs-on: macos-latest
     steps:
       # setup nix and cachix environment
@@ -23,3 +23,17 @@ jobs:
           
       # now the actual build
       - run: nix-build -A emacsOsx
+
+  emacsOsxPlus:
+    runs-on: macos-latest
+    steps:
+      # setup nix and cachix environment
+      - uses: actions/checkout@v2
+      - uses: cachix/install-nix-action@v13
+      - uses: cachix/cachix-action@v10
+        with:
+          name: emacs-osx
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          
+      # now the actual build
+      - run: nix-build -A emacsOsxPlus
