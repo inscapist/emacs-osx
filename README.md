@@ -14,12 +14,12 @@ https://nixos.org/guides/install-nix.html
 ```sh
 # Build locally
 git clone git@github.com:sagittaros/emacs-osx.git
-cd emacs-osx && nix-env -iA emacsOsx # optionally choose emacsOsxPlus
+cd emacs-osx && nix-env -iA emacsOsxNative
 
 # Install from cachix binaries
 nix-env -iA cachix -f https://cachix.org/api/v1/install
 cachix use emacs-osx
-nix-env -iA emacsOsx -f https://github.com/sagittaros/emacs-osx/archive/main.zip
+nix-env -iA emacsOsxNative -f https://github.com/sagittaros/emacs-osx/archive/main.zip
 ```
 
 #### Copy to /Applications
