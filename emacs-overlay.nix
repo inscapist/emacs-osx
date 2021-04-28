@@ -28,10 +28,6 @@ let
             --replace '(emacs-repository-get-version)' '"${repoMeta.rev}"' \
             --replace '(emacs-repository-get-branch)' '"master"'
           '';
-          postInstall = old.postInstall + ''
-  	        rm -rf /Applications/Emacs.app
-            cp -rL $out/Applications/Emacs.app /Applications
-          '';
         }))
     ];
 
