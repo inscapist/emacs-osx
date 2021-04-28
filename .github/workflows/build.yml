@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-11.0
+    runs-on: macos-latest
     steps:
       # setup nix and cachix environment
       - uses: actions/checkout@v2
