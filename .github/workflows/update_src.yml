@@ -3,31 +3,31 @@ name: Update Emacs Source
 on:
   schedule:
     # At minute 0 past every 8th hour.
-    - cron: '0 */8 * * *'
+    - cron: "0 */8 * * *"
   workflow_dispatch:
 
 jobs:
   update-overlay:
     runs-on: macos-latest
     steps:
-    - name: Checkout project
-      uses: actions/checkout@v2
+      - name: Checkout project
+        uses: actions/checkout@v2
 
-    - name: Install Nix
-      uses: cachix/install-nix-action@v13
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
+      - name: Install Nix
+        uses: cachix/install-nix-action@v13
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
 
-    - name: Configure Git
-      run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
+      - name: Configure Git
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
 
-    - name: Update inputs
-      run: |
-        ./emacs-source/update
+      - name: Update inputs
+        run: |
+          ./emacs-source/update
 
-    - name: Push commit with updated inputs
-      run: |
-        git pull --rebase --autostash
-        git push
+      - name: Push commit with updated inputs
+        run: |
+          git pull --rebase --autostash
+          git push
