@@ -1,5 +1,7 @@
 # Emacs OSX
 
+![Build Status](https://github.com/sagittaros/emacs-osx/actions/workflows/build.yml/badge.svg)
+
 ## Installation
 
 #### Install Nix and optionally nix-darwin
