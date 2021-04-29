@@ -13,19 +13,19 @@
 
 #### emacsOsx
 
-master emacs
+> master emacs
 
 #### emacsOsxNative
 
-master emacs, with native compilation
+> master emacs, with native compilation
 
 #### emacsOsxTile
 
-emacsOsx with tiling support (may not work with posframe/childframe)
+> emacsOsx with tiling support (may not work with posframe/childframe)
 
 #### emacsOsxNativeTile
 
-emacsOsxNative with tiling support (may not work with posframe/childframe)
+> emacsOsxNative with tiling support (may not work with posframe/childframe)
 
 ## Installation
 
