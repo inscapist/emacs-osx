@@ -6,3 +6,8 @@ install:
 	sudo rm -rf /Applications/Emacs.app
 	sudo cp -rL ~/.nix-profile/Applications/Emacs.app /Applications
 
+install-with-tile:
+	nix-env -f . -iA emacsOsxNativeTile
+	sudo rm -rf /Applications/Emacs.app
+	sudo cp -rL ~/.nix-profile/Applications/Emacs.app /Applications
+
