@@ -13,7 +13,7 @@
 
 #### emacsOsx
 
-> master emacs
+> master emacs. Fresh out of https://savannah.gnu.org/projects/emacs
 
 #### emacsOsxNative
 
