@@ -8,6 +8,6 @@ let
 in with pkgs; {
   inherit emacsOsx emacsOsxNative;
 
-  # with no patches whatsoever
-  inherit emacsOsxMin emacsOsxNativeMin;
+  # for use in chunwm or yabai
+  inherit emacsOsxTile emacsOsxNativeTile;
 }

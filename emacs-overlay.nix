@@ -31,26 +31,27 @@ let
         }))
     ];
 
-  emacsOsx = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [
+  emacsOsx = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [ ] { };
+
+  emacsOsxNative = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [ ] {
+    nativeComp = true;
+  };
+
+  emacsOsxTile = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [
     ./patches/no-titlebar.patch
     ./patches/fix-window-role-yabai.patch
   ] { };
 
-  emacsOsxNative = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [
+  emacsOsxNativeTile = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [
     ./patches/no-titlebar.patch
     ./patches/fix-window-role-yabai.patch
   ] { nativeComp = true; };
 
-  emacsOsxMin = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [ ] { };
-
-  emacsOsxNativeMin =
-    mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [ ] {
-      nativeComp = true;
-    };
-
 in {
   inherit emacsOsx;
   inherit emacsOsxNative;
-  inherit emacsOsxMin;
-  inherit emacsOsxNativeMin;
+
+  # for use in chunwm or yabai
+  inherit emacsOsxTile;
+  inherit emacsOsxNativeTile;
 }

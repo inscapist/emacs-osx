@@ -6,8 +6,26 @@
 
 - Tested on Mac OSX Big Sur
 - Works with yabai tiling window manager
-- Comes with 4 variants (with/without native-compilation, and with/without patches)
+- Comes with 4 variants (with/without native-compilation, and with/without tiling support)
 - Cached builds, updated from source every 8 hours
+
+## There are 4 variants
+
+#### emacsOsx
+
+master emacs
+
+#### emacsOsxNative
+
+master emacs, with native compilation
+
+#### emacsOsxTile
+
+emacsOsx with tiling support (may not work with posframe/childframe)
+
+#### emacsOsxNativeTile
+
+emacsOsxNative with tiling support (may not work with posframe/childframe)
 
 ## Installation
 
