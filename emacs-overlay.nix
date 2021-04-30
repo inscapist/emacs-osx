@@ -1,6 +1,6 @@
 self: super:
 let
-  pkgs = import ./pkgs;
+  pkgs = import ./pkgs.nix;
 
   # I am using the "builder" from nix-community's emacs-overlay, with some slight modifications
   # https://github.com/nix-community/emacs-overlay/blob/d1fbf6d39f3a0869c5fb0cc7f9ba7c9033e35cf9/default.nix#L25

@@ -1,4 +1,4 @@
-let pkgs = import ./pkgs;
+let pkgs = import ./pkgs.nix;
 in with pkgs; {
   inherit emacsOsx emacsOsxNative;
 
