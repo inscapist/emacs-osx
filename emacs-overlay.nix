@@ -29,6 +29,7 @@ let
             --replace '(emacs-repository-get-version)' '"${repoMeta.rev}"' \
             --replace '(emacs-repository-get-branch)' '"master"'
           '';
+          CFLAGS = "-DMAC_OS_X_VERSION_MAX_ALLOWED=110200";
         }))
     ];
 
@@ -48,10 +49,7 @@ let
     ./patches/fix-window-role-yabai.patch
   ] { nativeComp = true; };
 
-in
-
-_: _:
- {
+in _: _: {
   inherit emacsOsx;
   inherit emacsOsxNative;
 
