@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [main]
+    branches: [main, experiment/**]
   pull_request:
     branches: [main]
   workflow_run:
@@ -29,4 +29,3 @@ jobs:
 
       # now the actual build
       - run: nix-build
-
