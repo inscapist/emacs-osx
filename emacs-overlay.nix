@@ -1,5 +1,7 @@
 self: super:
 let
+  pkgs = import ./pkgs;
+
   # I am using the "builder" from nix-community's emacs-overlay, with some slight modifications
   # https://github.com/nix-community/emacs-overlay/blob/d1fbf6d39f3a0869c5fb0cc7f9ba7c9033e35cf9/default.nix#L25
   mkGitEmacs = namePrefix: jsonFile: patches:
@@ -12,7 +14,7 @@ let
         super.fetchFromGitHub
       else
         throw "Unknown repository type ${repoMeta.type}!";
-    in builtins.foldl' (drv: fn: fn drv) self.emacs [
+    in builtins.foldl' (drv: fn: fn drv) pkgs.emacs [
 
       (drv: drv.override ({ srcRepo = true; } // args))
 
