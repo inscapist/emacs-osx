@@ -29,7 +29,7 @@ let
             --replace '(emacs-repository-get-version)' '"${repoMeta.rev}"' \
             --replace '(emacs-repository-get-branch)' '"master"'
           '';
-          CFLAGS = "-DMAC_OS_X_VERSION_MAX_ALLOWED=110200";
+          CFLAGS = "-DMAC_OS_X_VERSION_MAX_ALLOWED=110200 -g -O2";
         }))
     ];
 
