@@ -1,4 +1,3 @@
-self: super:
 let
   pkgs = import ./pkgs.nix;
 
@@ -7,11 +6,11 @@ let
   mkGitEmacs = namePrefix: jsonFile: patches:
     { ... }@args:
     let
-      repoMeta = super.lib.importJSON jsonFile;
+      repoMeta = pkgs.lib.importJSON jsonFile;
       fetcher = if repoMeta.type == "savannah" then
-        super.fetchFromSavannah
+        pkgs.fetchFromSavannah
       else if repoMeta.type == "github" then
-        super.fetchFromGitHub
+        pkgs.fetchFromGitHub
       else
         throw "Unknown repository type ${repoMeta.type}!";
     in builtins.foldl' (drv: fn: fn drv) pkgs.emacs [
@@ -49,7 +48,10 @@ let
     ./patches/fix-window-role-yabai.patch
   ] { nativeComp = true; };
 
-in {
+in
+
+_: _:
+ {
   inherit emacsOsx;
   inherit emacsOsxNative;
 
