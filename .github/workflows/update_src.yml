@@ -2,8 +2,8 @@ name: Update Emacs Source
 
 on:
   schedule:
-    # At minute 0 past every 8th hour.
-    - cron: "0 0 * * *"
+    # At 4pm UTC (SG time midnight) past every 24th hour.
+    - cron: "0 16 * * *"
   workflow_dispatch:
 
 jobs:
