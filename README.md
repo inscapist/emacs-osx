@@ -39,10 +39,6 @@ https://nixos.org/guides/install-nix.html
 #### Install to nix-store
 
 ```sh
-# Build locally
-git clone git@github.com:sagittaros/emacs-osx.git
-cd emacs-osx && nix-env -iA emacsOsxNative
-
 # Install from cachix binaries
 nix-env -iA cachix -f https://cachix.org/api/v1/install
 cachix use emacs-osx
