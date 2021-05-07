@@ -42,6 +42,8 @@ https://nixos.org/guides/install-nix.html
 # Install from cachix binaries
 nix-env -iA cachix -f https://cachix.org/api/v1/install
 cachix use emacs-osx
+
+# `emacsOsxNative` can be substituted with any variant (mentioned above)
 nix-env -iA emacsOsxNative -f https://github.com/sagittaros/emacs-osx/archive/refs/tags/built.tar.gz
 ```
 
