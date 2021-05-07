@@ -27,5 +27,14 @@ jobs:
           name: emacs-osx
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      # now the actual build
-      - run: nix-build
+      - name: Attempt nix-build
+        run: nix-build
+
+      - name: Build success, tag as "latest"
+        if: ${{ success() }}
+        run: |
+          git pull --rebase --autostash
+          git tag -d built
+          git push origin :refs/tags/built
+          git tag built
+          git push origin built
