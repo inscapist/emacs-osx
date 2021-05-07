@@ -33,6 +33,7 @@ jobs:
       - name: Build success, tag as "latest"
         if: ${{ success() }}
         run: |
+          git fetch --all --tags
           git pull --rebase --autostash
           git tag -d built
           git push origin :refs/tags/built
