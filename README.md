@@ -42,7 +42,7 @@ https://nixos.org/guides/install-nix.html
 # Install from cachix binaries
 nix-env -iA cachix -f https://cachix.org/api/v1/install
 cachix use emacs-osx
-nix-env -iA emacsOsxNative -f https://github.com/sagittaros/emacs-osx/archive/main.zip
+nix-env -iA emacsOsxNative -f https://github.com/sagittaros/emacs-osx/archive/refs/tags/built.tar.gz
 ```
 
 #### Copy to /Applications
@@ -82,6 +82,7 @@ Note that this uses --with-ns (nextstep) and patches from "Mac Port" (see [here]
 ## Inspired By
 
 [Gccemacs by twlz0ne](https://github.com/twlz0ne/nix-gccemacs-darwin)
+
 ## CI configuration (Github Action)
 
 Refer https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
