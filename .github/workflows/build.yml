@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [main, experiment/**]
+    branches: [experiment/**]
   pull_request:
     branches: [main]
   workflow_run:
