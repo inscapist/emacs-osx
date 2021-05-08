@@ -183,9 +183,3 @@
        (default +bindings +smartparens))
 
 
-;; move by visual line
-;; https://github.com/hlissner/doom-emacs/issues/401
-(setq evil-respect-visual-line-mode t)
-
-;; https://github.com/kiwanami/emacs-epc/issues/35
-(setq byte-compile-warnings '(cl-functions))

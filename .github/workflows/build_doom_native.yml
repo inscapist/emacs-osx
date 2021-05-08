@@ -22,7 +22,7 @@ jobs:
       - name: Install emacs with native-compilation
         run: |
           REL=https://github.com/sagittaros/emacs-osx/archive/refs/tags/built.tar.gz
-          nix-env -iA emacsOsxNative -f REL
+          nix-env -iA emacsOsxNative -f $REL
 
       - name: Build doom emacs
         run: |
