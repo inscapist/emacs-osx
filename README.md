@@ -1,6 +1,6 @@
 # Emacs OSX
 
-![Build Status](https://github.com/sagittaros/emacs-osx/actions/workflows/build_doom_native.yml/badge.svg)
+![Latest HEAD Emacs Status](https://github.com/sagittaros/emacs-osx/actions/workflows/build.yml/badge.svg)
 
 ## Features
 
