@@ -23,14 +23,20 @@ jobs:
         run: |
           REL=https://github.com/sagittaros/emacs-osx/archive/refs/tags/built.tar.gz
           nix-env -iA emacsOsxNative -f REL
-          
+
       - name: Build doom emacs
         run: |
           git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
           ~/.emacs.d/bin/doom install
-          
+
+      - name: Configure Git
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
       - name: Gzip .emacs.d if build was successful
         if: ${{ success() }}
         run: |
           tar -czvf dot-emacs-d-native.tar.gz ~/.emacs.d
           git commit -m "Updated doom build"
+          git push
