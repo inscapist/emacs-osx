@@ -24,6 +24,9 @@ jobs:
           REL=https://github.com/sagittaros/emacs-osx/archive/refs/tags/built.tar.gz
           nix-env -iA emacsOsxNative -f $REL
 
+      - name: Copy a more comprehensive .doom.d
+        run: cp -rp .doom.d ~/
+
       - name: Build doom emacs
         run: |
           git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
