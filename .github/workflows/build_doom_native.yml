@@ -41,5 +41,7 @@ jobs:
         if: ${{ success() }}
         run: |
           tar -czvf dot-emacs-d-native.tar.gz ~/.emacs.d
+          rm -rf ~/.emacs.d
+          git add .
           git commit -m "Updated doom build"
           git push
