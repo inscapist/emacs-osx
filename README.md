@@ -2,6 +2,13 @@
 
 ![Latest HEAD Emacs Status](https://github.com/sagittaros/emacs-osx/actions/workflows/build.yml/badge.svg)
 
+## NOTE
+
+For doom emacs users, there has been a load of issues between doom and native-compiled emacs. Please use `emacsOsx` or `emacsOsxTile` till the dust settles.
+- https://github.com/hlissner/doom-emacs/issues/4995
+- https://github.com/hlissner/doom-emacs/pull/5040
+- https://github.com/hlissner/doom-emacs/issues/5038
+
 ## Features
 
 - Tested on Mac OSX Big Sur
