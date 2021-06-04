@@ -1,8 +1,8 @@
 let
   # refer https://status.nixos.org for latest nixpkgs
-  commit = "ee4520e789864f3441f3ec488e16d9f548b22ca5";
+  commit = "7e9e1b6351bb4acc71f88d3fc4defa3fa899e121";
   pkgs = import (fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/${commit}.tar.gz";
-    sha256 = "1cc21hspswl2wgbqi2nd4wfzp9ki2033yw2kkf4j7nhpwr80rn5w";
+    sha256 = "1ga7zkkzksgpvymkblj31m55zdrn1ak2iqnisk177x5mgd9vvcqp";
   }) { overlays = [ (import ./emacs-overlay.nix) ]; };
 in pkgs
