@@ -29,6 +29,7 @@ let
             --replace '(emacs-repository-get-version)' '"${repoMeta.rev}"' \
             --replace '(emacs-repository-get-branch)' '"master"'
           '';
+          # https://github.com/NixOS/nixpkgs/issues/109997#issuecomment-867318377
           CFLAGS = "-DMAC_OS_X_VERSION_MAX_ALLOWED=110200 -g -O2";
         }))
     ];
