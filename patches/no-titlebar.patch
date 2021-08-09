@@ -1,82 +1,53 @@
-From 1819aa42db3ec7d2375e51b0b4cc0df4f8930ab0 Mon Sep 17 00:00:00 2001
-From: Golem <golem@d12frosted.io>
-Date: Thu, 9 Jan 2020 07:21:27 +0200
-Subject: [PATCH] [patch] no-titlebar-head
+From 42d9068b3b5d620ccd6548dbb089368875e03f1f Mon Sep 17 00:00:00 2001
+From: Konstantin Shabanov <mail@etehtsea.me>
+Date: Mon, 9 Aug 2021 15:59:45 +0700
+Subject: [PATCH] Disable titlebar on macOS
 
 ---
- src/nsterm.m | 35 +++++++----------------------------
- 1 file changed, 7 insertions(+), 28 deletions(-)
+ src/nsterm.m | 16 ++++------------
+ 1 file changed, 4 insertions(+), 12 deletions(-)
 
 diff --git a/src/nsterm.m b/src/nsterm.m
-index a8f7540ea2..53b152c5f5 100644
+index ba5d81fb6c..28022822e6 100644
 --- a/src/nsterm.m
 +++ b/src/nsterm.m
-@@ -473,11 +473,9 @@ - (NSColor *)colorUsingDefaultColorSpace
- 
+@@ -433,11 +433,9 @@ - (NSColor *)colorUsingDefaultColorSpace
+
  /* These flags will be OR'd or XOR'd with the NSWindow's styleMask
     property depending on what we're doing.  */
 -#define FRAME_DECORATED_FLAGS (NSWindowStyleMaskTitled              \
 -                               | NSWindowStyleMaskResizable         \
-+#define FRAME_UNDECORATED_FLAGS ( NSWindowStyleMaskResizable         \
-                                | NSWindowStyleMaskMiniaturizable    \
-                                | NSWindowStyleMaskClosable)
+-                               | NSWindowStyleMaskMiniaturizable    \
+-                               | NSWindowStyleMaskClosable)
 -#define FRAME_UNDECORATED_FLAGS NSWindowStyleMaskBorderless
- 
++#define FRAME_UNDECORATED_FLAGS (NSWindowStyleMaskResizable         \
++                                | NSWindowStyleMaskMiniaturizable    \
++                                | NSWindowStyleMaskClosable)
+
  /* TODO: Get rid of need for these forward declarations.  */
  static void ns_condemn_scroll_bars (struct frame *f);
-@@ -1985,23 +1983,11 @@ Hide the window (X11 semantics)
-     {
-       block_input ();
- 
--      if (NILP (new_value))
--        {
--          FRAME_UNDECORATED (f) = false;
--          [window setStyleMask: ((window.styleMask | FRAME_DECORATED_FLAGS)
--                                  ^ FRAME_UNDECORATED_FLAGS)];
+@@ -8217,10 +8215,8 @@ - (instancetype) initWithEmacsFrame:(struct frame *)f
+
+   if (fullscreen)
+     styleMask = NSWindowStyleMaskBorderless;
+-  else if (FRAME_UNDECORATED (f))
+-    styleMask = FRAME_UNDECORATED_FLAGS;
+   else
+-    styleMask = FRAME_DECORATED_FLAGS;
++    styleMask = FRAME_UNDECORATED_FLAGS;
+
+
+   self = [super initWithContentRect:
+@@ -8293,10 +8289,6 @@ - (instancetype) initWithEmacsFrame:(struct frame *)f
+       if ([col alphaComponent] != (EmacsCGFloat) 1.0)
+         [self setOpaque:NO];
+
+-      /* toolbar support */
+-      if (! FRAME_UNDECORATED (f))
+-        [self createToolbar:f];
 -
--          [view createToolbar: f];
--        }
--      else
--        {
--          [window setToolbar: nil];
--          /* Do I need to release the toolbar here?  */
-+      [window setToolbar: nil];
-+      /* Do I need to release the toolbar here?  */
- 
--          FRAME_UNDECORATED (f) = true;
--          [window setStyleMask: ((window.styleMask | FRAME_UNDECORATED_FLAGS)
--                                 ^ FRAME_DECORATED_FLAGS)];
--        }
-+      FRAME_UNDECORATED (f) = true;
-+      [window setStyleMask: (window.styleMask | FRAME_UNDECORATED_FLAGS)];
- 
-       /* At this point it seems we don't have an active NSResponder,
-          so some key presses (TAB) are swallowed by the system.  */
-@@ -7551,11 +7537,9 @@ - (instancetype) initFrameFromEmacs: (struct frame *)f
-   maximizing_resize = NO;
- #endif
- 
--  win = [[EmacsWindow alloc]
-+  win = [[EmacsFSWindow alloc]
-             initWithContentRect: r
--                      styleMask: (FRAME_UNDECORATED (f)
--                                  ? FRAME_UNDECORATED_FLAGS
--                                  : FRAME_DECORATED_FLAGS)
-+                      styleMask: FRAME_UNDECORATED_FLAGS
-                         backing: NSBackingStoreBuffered
-                           defer: YES];
- 
-@@ -7591,11 +7575,6 @@ - (instancetype) initFrameFromEmacs: (struct frame *)f
-                    NILP (tem) ? "Emacs" : SSDATA (tem)];
-   [win setTitle: name];
- 
--  /* toolbar support */
--  if (! FRAME_UNDECORATED (f))
--    [self createToolbar: f];
--
--
-   [win setAppearance];
- 
- #if defined (NS_IMPL_COCOA) && MAC_OS_X_VERSION_MAX_ALLOWED >= 101000
--- 
-2.26.2
+       /* macOS Sierra automatically enables tabbed windows.  We can't
+          allow this to be enabled until it's available on a Free system.
+          Currently it only happens by accident and is buggy anyway.  */
+--
+2.32.0
