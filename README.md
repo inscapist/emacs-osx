@@ -5,7 +5,7 @@
 
 ## Features
 
-- Tested on Mac OSX Big Sur
+- Tested on Mac OSX Big Sur and Catalina
 - Works with yabai tiling window manager
 - Comes with 4 variants (with/without native-compilation, and with/without tiling support)
 - Cached builds, updated from source every 24 hours
