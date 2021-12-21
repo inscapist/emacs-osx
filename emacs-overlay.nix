@@ -34,18 +34,24 @@ let
         }))
     ];
 
-  emacsOsx = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [ ] { };
+  emacsOsx = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [
+    ./patches/codesign.patch
+  ] { };
 
-  emacsOsxNative = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [ ] {
+  emacsOsxNative = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [
+    ./patches/codesign.patch
+  ] {
     nativeComp = true;
   };
 
   emacsOsxTile = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [
+    ./patches/codesign.patch
     ./patches/no-titlebar.patch
     ./patches/fix-window-role-yabai.patch
   ] { };
 
   emacsOsxNativeTile = mkGitEmacs "emacs-osx" ./emacs-source/emacs-master.json [
+    ./patches/codesign.patch
     ./patches/no-titlebar.patch
     ./patches/fix-window-role-yabai.patch
   ] { nativeComp = true; };
